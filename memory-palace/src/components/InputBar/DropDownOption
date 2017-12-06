@@ -1,0 +1,15 @@
+class Option extends React.Component{
+    constructor(props){
+        super(props);
+        this.onSelect = this.onSelect.bind(this);
+    }
+
+    onSelectParsedWord(e){
+        e.preventDefault();
+        this.props.onSelectParsedWord(this.props.option);
+    }
+
+    render(){
+        <li onClick={this.onSelect} {this.props.option.value}></li>
+    }
+}
