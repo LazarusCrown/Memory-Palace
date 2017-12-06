@@ -5,11 +5,12 @@ class Dropdown extends React.Component {
         return (
             <div>
                 <form onSubmit = {this.props.addTodo}>
-                <select id="___" onChange = {this.props.handleWordSelect value={this.props.____}}>
-                    return ___.map(e => {
-                        <option value = e >e</option>
-                    })
-                </select>
+                    <select id="___" onChange = {this.props.handleWordSelect value={this.props.month}}>
+                        return ___.map(e => {
+                            <option value = e >{e}</option>
+                        })
+                    </select>
+                </form>
             </div>
         )
     }
