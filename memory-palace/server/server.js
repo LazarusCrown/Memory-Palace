@@ -18,18 +18,18 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../')));
 
 // add new node data to database
-app.post('/api', nodeController.createNode, nodeController.getAllNodes, (req, res) => {
-  res.status(200);
-  res.end();
-})
-// get all nodes on page load
-app.get('/api', nodeController.getAllNodes, (req, res) => {
-  console.log('/ get: ', req.body);
-  res.contentType('application/json');
-  res.status(200);
-  res.send(req.body);
-  // res.end();
-})
+// app.post('/api', nodeController.createNode, nodeController.getAllNodes, (req, res) => {
+//   res.status(200);
+//   res.end();
+// })
+// // get all nodes on page load
+// app.get('/api', nodeController.getAllNodes, (req, res) => {
+//   console.log('/ get: ', req.body);
+//   res.contentType('application/json');
+//   res.status(200);
+//   res.send(req.body);
+//   // res.end();
+// })
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

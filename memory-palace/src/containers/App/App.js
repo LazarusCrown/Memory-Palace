@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import SearchBar from '../../components/InputBar/SearchBar';
+import View from '../../components/View';
 
 class App extends Component {
   constructor(props){
@@ -28,6 +29,20 @@ class App extends Component {
     this.handleWordSelect = this.handleWordSelect.bind(this);
     // this.handleConfirmInput = this.handleConfirmInput.bind(this);
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseClick = this.onMouseClick.bind(this);
+    
+  }
+
+  onMouseMove(e) {
+    const position = this.refs.elem.getDOMNode().getBoundingClientRect();
+    console.log(position, e.nativeEvent.offsetX, e.screenX);
+    this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
+  }
+  onMouseClick(e) {
+    //create new node at the coordinates
+    // let createNewNode = new Node; 
+    let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
   }
 
   handleWordSelect(e){
@@ -78,10 +93,16 @@ class App extends Component {
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">Welcome to React</h1>
         </header>
+
+        <View 
+          locX={this.state.locX}
+          locY={this.state.locY}
+          onMouseMove={this.onMouseMove}
+          onMouseClick={this.onMouseClick}
+          />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-
         <SearchBar
           searchTerm={this.state.searchTerm}
           onSearchTermSubmit={this.handleSearchTermSubmit}/>

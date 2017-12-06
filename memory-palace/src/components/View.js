@@ -3,18 +3,19 @@
 //top-level app component
 //and related internal/external dependencies imported
 //and exported back out
+import React from 'react';
 
-class NodeIcon extends React.Component {
+class View extends React.Component {
     // constructor(props) {
     //   super(props);
     //   this.state = { x: 0, y: 0 };
     // }
     
-    onMouseMove(e) {
-      const position = this.refs.elem.getDOMNode().getBoundingClientRect();
-      // console.log(position, e.nativeEvent.offsetX, e.screenX);
-      this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
-    }
+    // onMouseMove(e) {
+    //   const position = refs.elem.getDOMNode().getBoundingClientRect();
+    //   // console.log(position, e.nativeEvent.offsetX, e.screenX);
+    //   this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+    // }
     
     // onMouseClick(e) {
     //   //create new node at the coordinates
@@ -22,15 +23,16 @@ class NodeIcon extends React.Component {
     // }
     
     render() {
-      const { x, y } = this.state;
+      let x = this.props.locX;
+      let y = this.props.locY;
       return <div ref="elem" className="container">
         <div>
-          <img onMouseMove={this.onMouseMove.bind(this)} onMouseClick={this.onMouseClick} width="500" height="325" src="https://upload.wikimedia.org/wikipedia/commons/9/93/Horham_Hall_blueprint.png" />
+          <img onMouseMove={this.props.onMouseMove} onMouseClick={this.props.onMouseClick} width="500" height="325" src="../../utilities/bedroom1.jpeg" />
         </div>
         <h1>Coordinates: { x } { y }</h1>
       </div>;
     }
   }
 
-  export default NodeIcon;
+  export default View;
   
