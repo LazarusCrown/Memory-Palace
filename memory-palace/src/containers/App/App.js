@@ -21,6 +21,8 @@ class App extends Component {
       day: '',
       baseYear: '',
       endYear: '',
+      locXHover: 0,
+      locYHover: 0,
       monthWord: '',
       dayWord: '',
       baseYearWord: '',
@@ -38,6 +40,7 @@ class App extends Component {
     this.onMouseClick = this.onMouseClick.bind(this);
     this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
+<<<<<<< HEAD
 
   // const extract = (str, pattern) => {
   //   (str.match(pattern) || []).pop() || '';
@@ -51,15 +54,32 @@ class App extends Component {
   //   extract(str, "[0-9]+");
   // }
 
+=======
+>>>>>>> 845dd5732586fd5ef41b736bc3f29b7f64e75327
   onMouseMove(e) {
-    const position = this.refs.elem.getDOMNode().getBoundingClientRect();
-    console.log(position, e.nativeEvent.offsetX, e.screenX);
-    this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
+    console.log('hover function')
+    console.log('x: ', e.screenX)
+    console.log('y: ', e.screenY)
+    this.setState({
+      locXHover: e.screenX,
+      locYHover: e.screenY
+    })
+    // const position = this.refs.elem.getDOMNode().getBoundingClientRect();
+    // console.log(position, e.nativeEvent.offsetX, e.screenX);
+    // this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
   }
+
   onMouseClick(e) {
     //create new node at the coordinates
     // let createNewNode = new Node; 
-    let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
+    console.log(e)
+    console.log('x: ', e.screenX)
+    console.log('y: ', e.screenY) 
+    this.setState({
+      locX: e.screenX,
+      locY: e.screenY
+    })
+    // let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
   }
 
   handleWordSelect(e){
@@ -137,9 +157,10 @@ class App extends Component {
         <View 
           locX={this.state.locX}
           locY={this.state.locY}
+          locXHover={this.state.locXHover}
+          locYHover={this.state.locYHover}
           onMouseMove={this.onMouseMove}
-          onMouseClick={this.onMouseClick}
-          />
+          onMouseClick={this.onMouseClick}/>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>

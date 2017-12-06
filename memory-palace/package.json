@@ -13,15 +13,16 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17",
     "mongodb": "^2.2.33",
     "mongoose": "4.4.1",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
-    "webpack": "^1.14.0"
+    "react-scripts": "1.0.17",
+    "webpack": "^1.14.0",
+    "xlsx": "^0.11.12"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
