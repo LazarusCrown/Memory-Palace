@@ -17,6 +17,10 @@ class App extends Component {
       date: '',
       locX: 0,
       locY: 0,
+      month: '',
+      day: '',
+      baseYear: '',
+      endYear: '',
       monthWord: '',
       dayWord: '',
       baseYearWord: '',
@@ -34,6 +38,18 @@ class App extends Component {
     this.onMouseClick = this.onMouseClick.bind(this);
     this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
+
+  // const extract = (str, pattern) => {
+  //   (str.match(pattern) || []).pop() || '';
+  // }
+
+  // const limitLength = (str, length) => {
+  //   str.substring(0, length);
+  // }
+
+  // const extractDate = (str) => {
+  //   extract(str, "[0-9]+");
+  // }
 
   onMouseMove(e) {
     const position = this.refs.elem.getDOMNode().getBoundingClientRect();
@@ -54,25 +70,30 @@ class App extends Component {
   handleSearchTermChange(e){
     const target = e.target;
     console.log('target: ', target)
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
-    console.log('name, value: ', name + value)
+    console.log('value: ', value)
     this.setState({
-      [name]: value
+      // date: limitLength(extractDate(e.target.value), 8);
+      date: value
     })
   }
 
   handleSearchTermSubmit(e){
+    // console.log("entering handleSearchTermSubmit");
+    console.log(this.state.date);
     e.preventDefault();
-    this.props.onSearchTermSubmit();
+    // this.setState({
+    //   month: this.state.date.slice(0,2)
+    //   day: this.state.date.slice(2,4)
+    //   baseYear: this.state.date.slice(4,6)
+    //   endYear: this.state.date.slice(6,8)
+    // })
   }
 
-  handleSearchTermChunking(e){
-    // const extract = (str, pattern) => {
-    //   (str.match(pattern) || []).pop() || '';
-    //   extract
-    // }
-  }
+  // handleSearchTermChunking(e){
+    
+  // }
 
   handleConfirmDropdownWords(e){
     let indexIncrement = this.state.nodeNum + 1;
@@ -124,7 +145,9 @@ class App extends Component {
         </p>
         <SearchBar
           searchTerm={this.state.searchTerm}
-          onSearchTermSubmit={this.handleSearchTermSubmit}/>
+          handleSearchTermSubmit={this.handleSearchTermSubmit}
+          handleSearchTermChange={this.handleSearchTermChange}
+          />
 
         <Dropdown 
           monthWord={this.state.monthWord} 
