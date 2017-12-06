@@ -32,7 +32,7 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
-    
+    this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
 
   onMouseMove(e) {
@@ -51,9 +51,27 @@ class App extends Component {
     this.setState({wordVal: e.target.value});
   }
 
+  handleSearchTermChange(e){
+    const target = e.target;
+    console.log('target: ', target)
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    console.log('name, value: ', name + value)
+    this.setState({
+      [name]: value
+    })
+  }
+
   handleSearchTermSubmit(e){
     e.preventDefault();
     this.props.onSearchTermSubmit();
+  }
+
+  handleSearchTermChunking(e){
+    // const extract = (str, pattern) => {
+    //   (str.match(pattern) || []).pop() || '';
+    //   extract
+    // }
   }
 
   handleConfirmDropdownWords(e){
