@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 import SearchBar from '../../components/InputBar/SearchBar';
+import Dropdown from '../../components/InputBar/Dropdown';
 import View from '../../components/View';
 
 class App extends Component {
@@ -16,6 +17,8 @@ class App extends Component {
       date: '',
       locX: 0,
       locY: 0,
+      locXHover: 0,
+      locYHover: 0,
       monthWord: '',
       dayWord: '',
       baseYearWord: '',
@@ -31,18 +34,32 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
-    
+    this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
+  }
+  onMouseMove(e) {
+    console.log('hover function')
+    console.log('x: ', e.screenX)
+    console.log('y: ', e.screenY)
+    this.setState({
+      locXHover: e.screenX,
+      locYHover: e.screenY
+    })
+    // const position = this.refs.elem.getDOMNode().getBoundingClientRect();
+    // console.log(position, e.nativeEvent.offsetX, e.screenX);
+    // this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
   }
 
-  onMouseMove(e) {
-    const position = this.refs.elem.getDOMNode().getBoundingClientRect();
-    console.log(position, e.nativeEvent.offsetX, e.screenX);
-    this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
-  }
   onMouseClick(e) {
     //create new node at the coordinates
     // let createNewNode = new Node; 
-    let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
+    console.log(e)
+    console.log('x: ', e.screenX)
+    console.log('y: ', e.screenY) 
+    this.setState({
+      locX: e.screenX,
+      locY: e.screenY
+    })
+    // let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
   }
 
   handleWordSelect(e){
@@ -50,9 +67,27 @@ class App extends Component {
     this.setState({wordVal: e.target.value});
   }
 
+  handleSearchTermChange(e){
+    const target = e.target;
+    console.log('target: ', target)
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    console.log('name, value: ', name + value)
+    this.setState({
+      [name]: value
+    })
+  }
+
   handleSearchTermSubmit(e){
     e.preventDefault();
     this.props.onSearchTermSubmit();
+  }
+
+  handleSearchTermChunking(e){
+    // const extract = (str, pattern) => {
+    //   (str.match(pattern) || []).pop() || '';
+    //   extract
+    // }
   }
 
   handleConfirmDropdownWords(e){
@@ -97,15 +132,43 @@ class App extends Component {
         <View 
           locX={this.state.locX}
           locY={this.state.locY}
+          locXHover={this.state.locXHover}
+          locYHover={this.state.locYHover}
           onMouseMove={this.onMouseMove}
-          onMouseClick={this.onMouseClick}
-          />
+          onMouseClick={this.onMouseClick}/>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <SearchBar
           searchTerm={this.state.searchTerm}
           onSearchTermSubmit={this.handleSearchTermSubmit}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+        
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+          
+
       </div>
     );
   }
