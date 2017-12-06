@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import SearchBar from '../../components/InputBar/SearchBar';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-<<<<<<< HEAD
-      xCoordinate: 0,
-      yCoordinate: 0,
-      numVal: 0,
-      wordVal: 0,
-      imgUrl: '',
-=======
       //store each node in here as an object with these attributes
       nodes: [],
       id: 0,
@@ -29,23 +23,12 @@ class App extends Component {
       dayImgArray: [],
       baseYearImgArray: [],
       endYearImgArray: [],
->>>>>>> 3e028358cef69031b535ef5bddad5228ffe0adcd
     }
 
-    // this.handleWordSelect = this.handleSelect.bind(this);
-    this.handleConfirmInput = this.handleConfirmInput.bind(this);
+    this.handleWordSelect = this.handleWordSelect.bind(this);
+    // this.handleConfirmInput = this.handleConfirmInput.bind(this);
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
   }
-
-<<<<<<< HEAD
-  // this.handleWordSelect = this.handleSelect.bind(this);
-=======
-  ////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////////////////////////////////////////////////////////////
->>>>>>> 3e028358cef69031b535ef5bddad5228ffe0adcd
 
   handleWordSelect(e){
     e.preventDefault();
@@ -53,7 +36,7 @@ class App extends Component {
   }
 
   handleSearchTermSubmit(e){
-    event.preventDefault();
+    e.preventDefault();
     this.props.onSearchTermSubmit();
   }
 
@@ -83,7 +66,7 @@ class App extends Component {
     })
 
     this.setState({
-      nodes = this.state.nodes,
+      nodes: this.state.nodes,
       nodeNum: indexIncrement
     })
   }
