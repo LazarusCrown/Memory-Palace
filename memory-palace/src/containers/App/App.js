@@ -35,12 +35,12 @@ class App extends Component {
 
     this.handleWordSelect = this.handleWordSelect.bind(this);
     // this.handleConfirmInput = this.handleConfirmInput.bind(this);
+    this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
     this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
-<<<<<<< HEAD
 
   // const extract = (str, pattern) => {
   //   (str.match(pattern) || []).pop() || '';
@@ -54,8 +54,6 @@ class App extends Component {
   //   extract(str, "[0-9]+");
   // }
 
-=======
->>>>>>> 845dd5732586fd5ef41b736bc3f29b7f64e75327
   onMouseMove(e) {
     console.log('hover function')
     console.log('x: ', e.screenX)
@@ -87,28 +85,47 @@ class App extends Component {
     this.setState({wordVal: e.target.value});
   }
 
-  handleSearchTermChange(e){
+  handleSearchTermChange(e){    
     const target = e.target;
-    console.log('target: ', target)
+    // console.log('target: ', target)
     const value = target.value;
     const name = target.name;
-    console.log('value: ', value)
+    // console.log('value: ', value)
+    // console.log(parseDate(value));
+    // date: limitLength(extractDate(e.target.value), 8);
     this.setState({
-      // date: limitLength(extractDate(e.target.value), 8);
-      date: value
+      date: value,
     })
   }
 
   handleSearchTermSubmit(e){
-    // console.log("entering handleSearchTermSubmit");
-    console.log(this.state.date);
+    console.log("entering handleSearchTermSubmit");
+
+    //date chunker
+    function parseDate (birthday) {
+      let parsed = birthday.split("/");
+      let tempArr = [];
+      tempArr[0] = parsed[2].slice(0,2);
+      tempArr[1] = parsed[2].slice(2,4);
+      parsed.splice(2,1,tempArr[0],tempArr[1]);
+      return parsed;
+    }
+
+    let parsedDate = parseDate(this.state.date);
+    // console.log("the date: ", this.state.date);
+    // console.log("the month: ", parsedDate[0]);
+    // console.log("the day: ", parsedDate[1]);
+    // console.log("the baseYear: ", parsedDate[2]);
+    // console.log("the endYear: ", parsedDate[3]);
+    
     e.preventDefault();
-    // this.setState({
-    //   month: this.state.date.slice(0,2)
-    //   day: this.state.date.slice(2,4)
-    //   baseYear: this.state.date.slice(4,6)
-    //   endYear: this.state.date.slice(6,8)
-    // })
+
+    this.setState({
+      month: parsedDate[0],
+      day: parsedDate[1],
+      baseYear: parsedDate[2],
+      endYear: parsedDate[3],
+    })
   }
 
   // handleSearchTermChunking(e){
@@ -117,6 +134,7 @@ class App extends Component {
 
   handleConfirmDropdownWords(e){
     let indexIncrement = this.state.nodeNum + 1;
+
     const node = {
       day:0,
       month:0,
