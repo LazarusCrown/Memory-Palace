@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import SearchBar from '../../components/InputBar/SearchBar';
 import Dropdown from '../../components/InputBar/Dropdown';
 import View from '../../components/View';
+import ImageIcon from '../../components/ImageIcon';
 
 class App extends Component {
   constructor(props){
@@ -177,7 +178,7 @@ class App extends Component {
           handleSelectChange={this.handleSelectChange}
           handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
 
-          
+        <ImageIcon src="https://i.giphy.com/zd2dSk44nKlxK.gif"/>
 
       </div>
     );
