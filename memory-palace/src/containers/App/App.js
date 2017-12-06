@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import SearchBar from '../../components/InputBar/SearchBar';
 
 class App extends Component {
   constructor(props){
@@ -24,16 +25,10 @@ class App extends Component {
       endYearImgArray: [],
     }
 
-    // this.handleWordSelect = this.handleSelect.bind(this);
-    this.handleConfirmInput = this.handleConfirmInput.bind(this);
+    this.handleWordSelect = this.handleWordSelect.bind(this);
+    // this.handleConfirmInput = this.handleConfirmInput.bind(this);
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
   }
-
-  ////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////////////////////////////////////////////////////////////
-
-  ////////////////////////////////////////////////////////////////////////////////
 
   handleWordSelect(e){
     e.preventDefault();
@@ -41,7 +36,7 @@ class App extends Component {
   }
 
   handleSearchTermSubmit(e){
-    event.preventDefault();
+    e.preventDefault();
     this.props.onSearchTermSubmit();
   }
 
@@ -71,7 +66,7 @@ class App extends Component {
     })
 
     this.setState({
-      nodes = this.state.nodes,
+      nodes: this.state.nodes,
       nodeNum: indexIncrement
     })
   }
@@ -80,7 +75,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">

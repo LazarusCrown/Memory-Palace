@@ -27,4 +27,4 @@ class SubmitButton extends React.Component {
   }
 }
 
-export default class SubmitButton extends React.Component
+export default SubmitButton;
