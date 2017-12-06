@@ -15,7 +15,7 @@ class View extends React.Component {
       return (
         <div ref="elem" className="container" onMouseOver={this.props.onMouseMove}>
           <div>
-            <img width="80%" src="../../utilities/bedroom1.jpeg" />
+            <img onClick={this.props.onMouseClick} width="80%" src="../../utilities/bedroom1.jpeg" />
           {/* need to render each dot and do onMouseOver for each */}
           </div>
           <div><h1>Coordinates: { x } { y }</h1></div>
