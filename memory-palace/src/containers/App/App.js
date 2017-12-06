@@ -6,11 +6,11 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      xCoordinate = 0,
-      yCoordinate = 0,
-      numVal = 0,
-      wordVal = 0,
-      imgUrl = '',
+      xCoordinate: 0,
+      yCoordinate: 0,
+      numVal: 0,
+      wordVal: 0,
+      imgUrl: '',
     }
   }
 
