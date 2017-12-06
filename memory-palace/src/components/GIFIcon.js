@@ -7,8 +7,8 @@ class GIFIcon extends React.Component {
           <div>
             <img src="//imgur.com/YOIHCpN"/> 
           </div>
-        )
-    });
+        );
+    }
   
 }
 

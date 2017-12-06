@@ -38,24 +38,9 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
-    this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
+    // this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
-<<<<<<< HEAD
 
-  // const extract = (str, pattern) => {
-  //   (str.match(pattern) || []).pop() || '';
-  // }
-
-  // const limitLength = (str, length) => {
-  //   str.substring(0, length);
-  // }
-
-  // const extractDate = (str) => {
-  //   extract(str, "[0-9]+");
-  // }
-
-=======
->>>>>>> 845dd5732586fd5ef41b736bc3f29b7f64e75327
   onMouseMove(e) {
     console.log('hover function')
     console.log('x: ', e.screenX)
