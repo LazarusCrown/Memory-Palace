@@ -1,4 +1,4 @@
-const Item = require('./todoModel');
+const Node = require('./nodeModel');
 const bodyParser = require('body-parser');
 
 const nodeController = {};

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import SearchBar from '../../components/InputBar/SearchBar';
+import Dropdown from '../../components/InputBar/Dropdown';
 
 class App extends Component {
   constructor(props){
@@ -85,6 +86,33 @@ class App extends Component {
         <SearchBar
           searchTerm={this.state.searchTerm}
           onSearchTermSubmit={this.handleSearchTermSubmit}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+        
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+          
+
       </div>
     );
   }
