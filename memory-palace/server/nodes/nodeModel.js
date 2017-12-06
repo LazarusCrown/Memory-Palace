@@ -7,7 +7,7 @@ const nodeSchema = new Schema({
   locX: {type: String},
   locY: {type: String},
   dateDescription: {type: String},
-  date: {type: Number},
+  date: { type: Date, default: Date.now },
   monthWord: {type: String},
   dayWord: {type: String},
   baseYearWord: {type: String},
@@ -16,10 +16,10 @@ const nodeSchema = new Schema({
   dayImg: {type: String},
   baseYearImg: {type: String},
   endYearImg: {type: String},
-  monthImgArray: {type: String},  
-  dayImgArray: {type: String},
-  baseYearImgArray: {type: String},
-  endYearImgArray: {type: String} 
+  monthImgArray: [],  
+  dayImgArray: [],
+  baseYearImgArray: [],
+  endYearImgArray: []
   // idNum: {type: Number}
 });
 // may not need 'idNum' field, but could be useful if a node is deleted and
