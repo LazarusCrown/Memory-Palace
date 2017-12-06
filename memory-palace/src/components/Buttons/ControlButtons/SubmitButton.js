@@ -1,25 +1,25 @@
-class ResetButton extends React.Component {
+class SubmitButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        clicked: false
+        clicked: 0
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    //clear all content 
+    //initiate db capture of input field content
 
 
     this.setState(prevState => ({
-      clicked: true
+      clicked: this.clicked +1
     }));
   }
 
   render() {
     return (
       <button onClick={this.handleClick}>
-        {ResetButton}
+        {SubmitButton}
       </button>
     );
   }
