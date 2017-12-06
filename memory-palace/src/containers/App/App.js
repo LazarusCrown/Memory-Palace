@@ -23,29 +23,30 @@ class App extends Component {
       baseYearImgArray: [],
       endYearImgArray: [],
     }
+
+    // this.handleWordSelect = this.handleSelect.bind(this);
+    this.handleConfirmInput = this.handleConfirmInput.bind(this);
+    this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
   }
 
-  // this.handleWordSelect = this.handleSelect.bind(this);
-  this.handleConfirmInput = this.handleConfirmInput.bind(this);
-  this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
+  ////////////////////////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   handleWordSelect(e){
     e.preventDefault();
     this.setState({wordVal: e.target.value});
   }
 
-  handleConfirmInput(e){
-  
-    const target = e.target;
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [___]: value;
-    })
+  handleSearchTermSubmit(e){
+    event.preventDefault();
+    this.props.onSearchTermSubmit();
   }
 
   handleConfirmDropdownWords(e){
-    let indexIncrement = this.state.index + 1;
+    let indexIncrement = this.state.nodeNum + 1;
     const node = {
       day:0,
       month:0,
@@ -62,7 +63,7 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body:JSON.stringify(this.state.data[this.state.index])
+      body:JSON.stringify(this.state.node[this.state.nodeNum])
     }).then((res)=>{
       console.log(res)
     }).catch((err)=>{
@@ -71,7 +72,7 @@ class App extends Component {
 
     this.setState({
       nodes = this.state.nodes,
-      index: indexIncrement
+      nodeNum: indexIncrement
     })
   }
   
@@ -85,6 +86,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+        <SearchBar
+          searchTerm={this.state.searchTerm}
+          onSearchTermSubmit={this.handleSearchTermSubmit}/>
       </div>
     );
   }
