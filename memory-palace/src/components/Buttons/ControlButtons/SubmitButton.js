@@ -1,3 +1,5 @@
+import React from 'react';
+
 class SubmitButton extends React.Component {
   constructor(props) {
     super(props);
@@ -24,3 +26,5 @@ class SubmitButton extends React.Component {
     );
   }
 }
+
+export default class SubmitButton extends React.Component
