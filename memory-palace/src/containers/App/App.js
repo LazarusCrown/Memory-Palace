@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 import SearchBar from '../../components/InputBar/SearchBar';
+import Dropdown from '../../components/InputBar/Dropdown';
 import View from '../../components/View';
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
-    
+    this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
   onMouseMove(e) {
     console.log('hover function')
@@ -66,9 +67,27 @@ class App extends Component {
     this.setState({wordVal: e.target.value});
   }
 
+  handleSearchTermChange(e){
+    const target = e.target;
+    console.log('target: ', target)
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    console.log('name, value: ', name + value)
+    this.setState({
+      [name]: value
+    })
+  }
+
   handleSearchTermSubmit(e){
     e.preventDefault();
     this.props.onSearchTermSubmit();
+  }
+
+  handleSearchTermChunking(e){
+    // const extract = (str, pattern) => {
+    //   (str.match(pattern) || []).pop() || '';
+    //   extract
+    // }
   }
 
   handleConfirmDropdownWords(e){
@@ -123,6 +142,33 @@ class App extends Component {
         <SearchBar
           searchTerm={this.state.searchTerm}
           onSearchTermSubmit={this.handleSearchTermSubmit}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+        
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+        <Dropdown 
+          monthWord={this.state.monthWord} 
+          handleInputChange={this.handleInputChange} 
+          handleSelectChange={this.handleSelectChange}
+          handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
+
+          
+
       </div>
     );
   }
