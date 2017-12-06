@@ -43,5 +43,5 @@ while(nextRowExists === true){
   nextRowExists = (sheet1[rowHead] ? true : false)
 }
 console.log(birthdateDict)
-module.export = dateDictionary;
+// module.export = dateDictionary;
 
