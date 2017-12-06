@@ -1,0 +1,16 @@
+import React from 'react';
+
+class Dropdown extends React.Component {
+    render () {
+        return (
+            <div>
+                <form onSubmit = {this.props.addTodo}>
+                <select id="___" onChange = {this.props.handleWordSelect value={this.props.____}}>
+                    return ___.map(e => {
+                        <option value = e >e</option>
+                    })
+                </select>
+            </div>
+        )
+    }
+}

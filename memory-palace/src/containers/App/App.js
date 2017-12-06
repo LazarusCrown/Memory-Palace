@@ -3,6 +3,28 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      xCoordinate = 0,
+      yCoordinate = 0,
+      numVal = 0,
+      wordVal = 0,
+      imgUrl = '',
+    }
+  }
+
+  this.handleWordSelect = this.handleSelect.bind(this);
+
+  handleWordSelect(e){
+    e.preventDefault();
+    this.setState({wordVal: e.target.value});
+  }
+
+  handleInputSearch(e){
+    this.props.onKeywordChange(this.searchKeyword.value)
+  }
+  
   render() {
     return (
       <div className="App">
