@@ -3,15 +3,17 @@ import React from 'react';
 
 class SearchBar extends React.Component{
 
-
     render(){
         return (
         <div className="search-bar">
-            <form onSubmit={this.handleSearchTermSubmit}>
+            <form onSubmit={this.props.handleSearchTermSubmit}>
                 <input
+                    name="value"
                     type="text"
-                    placeholder="Enter birthday..."/>
-                <button>Generate</button>
+                    placeholder="Enter birthday..."
+                    value = {this.props.value}
+                    onChange={this.props.handleSearchTermChange} />
+                <input id="generate" type="submit" value="generate" />
             </form>
         </div>
         )
