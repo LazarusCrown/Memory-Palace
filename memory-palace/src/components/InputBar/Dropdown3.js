@@ -103,18 +103,15 @@ let dictionary = [
     [ 'poop','poopy','boop','pappa','papa','puppy','pipe','pop','baby' ]
    ]
 
-
-
-class Dropdown extends React.Component{
-    
+class Dropdown3 extends React.Component{
 
     render(){
 
-        const wordArray = dictionary[parseInt(this.props.month)];
+        const wordArray = dictionary[parseInt(this.props.baseYear)];
         
                 if (wordArray){
                     wordArray.forEach((e)=>{
-                        let dropdownParent = document.getElementById("dropdown1");
+                        let dropdownParent = document.getElementById("dropdown3");
                         let option = document.createElement("option");
                         option.textContent = e;
                         dropdownParent.appendChild(option);
@@ -124,8 +121,8 @@ class Dropdown extends React.Component{
         return (
             <div>
                 <form onSubmit={this.props.handleConfirmDropdownWords}>
-                    <select id="dropdown1" onChange={this.props.handleWordSelect} value={this.props.monthWord}>
-
+                    <select id="dropdown3" onChange={this.props.handleWordSelect} value={this.props.monthWord}>
+                    
                     </select>
 
                     <input id="submit" type="submit" value="Generate GIFs" />
@@ -138,4 +135,4 @@ class Dropdown extends React.Component{
 //refactor so that this submit button is separate
 //and so that four dropdowns can be generated
 
-export default Dropdown;
+export default Dropdown3;
