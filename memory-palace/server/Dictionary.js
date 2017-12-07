@@ -100,3 +100,5 @@ let dictionary = [
   { '98': [ 'beef', 'pave', 'puffy', 'poofy', 'poof', 'buff', 'biff', 'buffy' ] },
   { '99': [ 'poop','poopy','boop','pappa','papa','puppy','pipe','pop','baby' ] }
  ]
+
+ export default dictionary;

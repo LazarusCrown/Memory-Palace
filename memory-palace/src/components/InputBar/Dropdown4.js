@@ -103,28 +103,15 @@ let dictionary = [
     { '99': [ 'poop','poopy','boop','pappa','papa','puppy','pipe','pop','baby' ] }
    ]
 
-
-
-class Dropdown extends React.Component{
-    
+class Dropdown4 extends React.Component{
 
     render(){
-        // console.log(dictionary[this.props.month]);
-
-        // Object.values(dictionary[this.props.month]).forEach((e)=>{
-        //     console.log(e);
-        //     let dropdownParent = document.getElementById("dropdown");
-        //     let option = document.createElement("option");
-        //     // option.text(e);
-        //     dropdownParent.appendChild(option);
-        // })
-
         return (
             <div>
                 <form onSubmit={this.props.handleConfirmDropdownWords}>
                     <select id="dropdown" onChange={this.props.handleWordSelect} value={this.props.monthWord}>
-
-                        <option>sumo</option>
+                    
+                        <option value="sumo">sumo</option>
                         <option value="sumo2">sumo2</option>
                         <option value="sumo2">sumo2</option>
                     </select>
@@ -139,4 +126,4 @@ class Dropdown extends React.Component{
 //refactor so that this submit button is separate
 //and so that four dropdowns can be generated
 
-export default Dropdown;
+export default Dropdown4;
