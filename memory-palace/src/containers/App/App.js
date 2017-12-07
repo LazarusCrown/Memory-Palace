@@ -33,32 +33,57 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
-    
+    // this.loadNodes = this.loadNodes.bind(this);
   }
+  
+  // componentDidMount() {
+  //   this.loadNodes();
+  // }
+
   onMouseMove(e) {
-    console.log('hover function')
-    console.log('x: ', e.screenX)
-    console.log('y: ', e.screenY)
+    console.log(e.screenX, e.screenY)
     this.setState({
       locXHover: e.screenX,
       locYHover: e.screenY
     })
-    // const position = this.refs.elem.getDOMNode().getBoundingClientRect();
-    // console.log(position, e.nativeEvent.offsetX, e.screenX);
-    // this.setState({ locX: e.nativeEvent.offsetX, locY: e.nativeEvent.offsetY });
   }
 
   onMouseClick(e) {
+    let nodeCopy = this.state.nodes.slice()
+
     //create new node at the coordinates
     // let createNewNode = new Node; 
-    console.log(e)
-    console.log('x: ', e.screenX)
-    console.log('y: ', e.screenY) 
-    this.setState({
+    let len = nodeCopy.length;
+    let counter = this.state.id + 1;
+    this.state.locX = e.screenX;
+    this.state.locY = e.screenY;
+    const nodeAdd = {
+      id: counter,
       locX: e.screenX,
       locY: e.screenY
+    }
+    nodeCopy.push(nodeAdd);
+    console.log('hereeeeeeeeeeeeeeeee')
+    // console.log('here state.count', this.state.id)
+    //make push to database  - this should probably go on the SUBMIT BUTTON SECTION, so all data loaded
+    fetch('http://localhost:8080/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(nodeAdd)
+    }).then((res) => {
+      console.log("this is res", res)
+    }).catch((err) => {
+      console.log(err)
+    });
+
+
+    //update state
+    this.setState({
+      nodes: nodeCopy,
+      id: counter
     })
-    // let nodePosition = this.refs.elem.getDOMNode().getBoundingClientRect();
   }
 
   handleWordSelect(e){
@@ -101,6 +126,27 @@ class App extends Component {
       nodeNum: indexIncrement
     })
   }
+
+  // loadNodes(){
+  //   fetch('http://localhost:8080/api').then(function(res){
+  //     return res.json();
+  //   }).then((myBlob) => {
+  //     console.log('blob: ', myBlob)
+  //     if(myBlob.loadedNodes.length){
+  //       // console.log(myBlob.loadedTodos);
+  //       let dbNodos = [];
+  //       myBlob.loadedNodes.map( (node) => dbNodos.push(node))
+  //       // console.log('dbTodos: ', dbTodos);
+  //       this.setState({
+  //         nodes: myBlob.loadedNodes,
+  //         id: myBlob.loadedNodes.length
+  //       })
+  //     }else{
+  //       // console.log('database empty, set data to null')
+  //       this.setState({nodes: null})
+  //     }
+  //   })
+  // }
   
   render() {
     return (
@@ -110,7 +156,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
 
-        <View 
+        <View
+          nodes = {this.state.nodes}
           locX={this.state.locX}
           locY={this.state.locY}
           locXHover={this.state.locXHover}
