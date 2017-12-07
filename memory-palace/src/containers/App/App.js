@@ -7,6 +7,7 @@ import Dropdown2 from '../../components/InputBar/Dropdown2';
 import Dropdown3 from '../../components/InputBar/Dropdown3';
 import Dropdown4 from '../../components/InputBar/Dropdown4';
 import View from '../../components/View';
+import ImageIcon from '../../components/ImageIcon';
 
 let dictionary = [
   { '00': [ 'susie', 'zoos', 'sues', 'sauce', 'assess', 'sissy', 'sassy' ] },
@@ -333,7 +334,7 @@ class App extends Component {
           handleSelectChange={this.handleSelectChange}
           handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
 
-          
+        <ImageIcon src="https://i.giphy.com/zd2dSk44nKlxK.gif"/>
 
       </div>
     );
