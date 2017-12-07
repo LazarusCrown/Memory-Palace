@@ -5,6 +5,8 @@ import SearchBar from '../../components/InputBar/SearchBar';
 import Dropdown from '../../components/InputBar/Dropdown';
 import View from '../../components/View';
 import ImageIcon from '../../components/ImageIcon';
+import GIFresults from './GIFoptions';
+
 
 class App extends Component {
   constructor(props){
@@ -32,6 +34,10 @@ class App extends Component {
       dayImgArray: [],
       baseYearImgArray: [],
       endYearImgArray: [],
+      monthGIF: '',
+      dayGIF: '',
+      baseYearGIF: '',
+      endYearGIF: ''
     }
 
     this.handleWordSelect = this.handleWordSelect.bind(this);
@@ -40,24 +46,93 @@ class App extends Component {
     this.handleConfirmDropdownWords = this.handleConfirmDropdownWords.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseClick = this.onMouseClick.bind(this);
+
+    //testing for GIFS...
+    this.testingGIFCollections = this.testingGIFCollections.bind(this);
+
     // this.handleSearchTermSubmit = this.handleSearchTermSubmit.bind(this);
   }
 
-<<<<<<< HEAD
-=======
-  // const extract = (str, pattern) => {
-  //   (str.match(pattern) || []).pop() || '';
-  // }
+  //GIF testing...
 
-  // const limitLength = (str, length) => {
-  //   str.substring(0, length);
-  // }
+  //feed me array of possible month GIFS
 
-  // const extractDate = (str) => {
-  //   extract(str, "[0-9]+");
-  // }
+  testingGIFCollectMonth(monthImgArray){
+    let displayArrayMonth = [];
+    for(let i=0;i<monthImgArray.length;i++){
 
->>>>>>> 2c171ddff410955a924f606e7413c7c59d74ee10
+      let creation = new ImageIcon
+
+      creation.monthWord = this.state.monthWord;
+      creation.dayWord = this.state.dayWord;
+      creation.baseYearWord = this.state.baseYearWord;
+      creation.endYearWord = this.state.endYearWord;
+      creation.src = this.state.monthImgArray[i];
+
+      displayArrayMonth.push(creation);
+    }
+    return displayArrayMonth;
+  }
+
+  //feed me array of possible day GIFS
+
+  testingGIFCollectDay(dayImgArray){
+    let displayArrayDay = [];
+    for(let j=0;j<dayImgArray.length;j++){
+
+      let creation = new ImageIcon
+
+      creation.monthWord = this.state.monthWord;
+      creation.dayWord = this.state.dayWord;
+      creation.baseYearWord = this.state.baseYearWord;
+      creation.endYearWord = this.state.endYearWord;
+      creation.src = this.state.dayImgArray[j];
+
+      displayArrayDay.push(creation);
+    }
+    return displayArrayDay;
+  }
+
+  //feed me array of possible baseyear GIFS
+
+  testingGIFCollectBaseYear(baseYearImgArray){
+    let displayArrayBaseYear = [];
+    for(let k=0;k<baseYearImgArray.length;k++){
+
+      let creation = new ImageIcon
+
+      creation.monthWord = this.state.monthWord;
+      creation.dayWord = this.state.dayWord;
+      creation.baseYearWord = this.state.baseYearWord;
+      creation.endYearWord = this.state.endYearWord;
+      creation.src = this.state.baseYearImgArray[k];
+
+      displayArrayBaseYear.push(creation);
+    }
+    return displayArrayBaseYear;
+  }
+
+  //feed me array of possible endyear GIFS
+
+  testingGIFCollectEndYear(endYearImgArray){
+    let displayArrayDay = [];
+    for(let z=0;z<baseYearImgArray.length;z++){
+
+      let creation = new ImageIcon
+
+      creation.monthWord = this.state.monthWord;
+      creation.dayWord = this.state.dayWord;
+      creation.baseYearWord = this.state.baseYearWord;
+      creation.endYearWord = this.state.endYearWord;
+      creation.src = this.state.endYearImgArray[z];
+
+      displayArrayEndYear.push(creation);
+    }
+    return displayArrayBaseYear;
+  }
+
+  ///
+
   onMouseMove(e) {
     console.log('hover function')
     console.log('x: ', e.screenX)
@@ -214,7 +289,26 @@ class App extends Component {
           handleSelectChange={this.handleSelectChange}
           handleConfirmDropdownWords={this.handleConfirmDropdownWords}/>
 
+        {/* testing for the GIFs is below */}
+
         <ImageIcon src="https://i.giphy.com/zd2dSk44nKlxK.gif"/>
+
+
+        <div id="GIFoptionsformonth">
+        {displayArrayMonth}
+        </div> 
+
+        <div id="GIFoptionsforday">
+        {displayArrayDay}
+        </div>
+
+        <div id="GIFoptionsforbaseyear">
+        {displayArrayBaseYear}
+        </div>
+
+        <div id="GIFoptionsforendyear">
+        {displayArrayEndYear}
+        </div>
 
       </div>
     );
